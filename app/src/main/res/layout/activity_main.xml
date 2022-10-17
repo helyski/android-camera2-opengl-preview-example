@@ -7,9 +7,36 @@
     tools:context=".MainActivity"
     android:background="#ff3300">
 
-    <com.tjn.gles.example.MyGLSurfaceView
-        android:id="@+id/cameraPreview"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+
+        <com.tjn.gles.example.MyGLSurfaceView
+            android:id="@+id/cameraPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnChangeSizeToSmall"
+                android:text="缩小"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnChangeSizeToFullScreen"
+                android:text="放大"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+
+
 
 </android.support.design.widget.CoordinatorLayout>

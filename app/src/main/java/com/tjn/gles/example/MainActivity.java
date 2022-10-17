@@ -10,11 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String TAG = "GLCamera_MainActivity";
 
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mGLSurfaceView = findViewById(R.id.cameraPreview);
         mGLSurfaceView.setPreviewSize(1280,720);
+
+        findViewById(R.id.btnChangeSizeToSmall).setOnClickListener(this);
+        findViewById(R.id.btnChangeSizeToFullScreen).setOnClickListener(this);
     }
 
     @Override
@@ -164,5 +169,27 @@ public class MainActivity extends AppCompatActivity {
     private void stopCamera(){
         camera2.releaseCamera();
         camera2 = null;
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        ViewGroup.LayoutParams lp = mGLSurfaceView.getLayoutParams();
+        switch (view.getId()){
+            case R.id.btnChangeSizeToSmall:
+                lp.width = 1;
+                lp.height = 1;
+                mGLSurfaceView.setLayoutParams(lp);
+                break;
+
+            case R.id.btnChangeSizeToFullScreen:
+                lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                mGLSurfaceView.setLayoutParams(lp);
+                break;
+            default:
+
+                break;
+        }
     }
 }
