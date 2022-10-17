@@ -4,21 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.Androidcamera2openglpreviewexample.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Androidcamera2openglpreviewexample.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
+    tools:context=".MainActivity"
+    android:background="#ff3300">
 
     <com.tjn.gles.example.MyGLSurfaceView
         android:id="@+id/cameraPreview"

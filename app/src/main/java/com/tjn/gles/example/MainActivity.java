@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mGLSurfaceView = findViewById(R.id.cameraPreview);
-        mGLSurfaceView.setPreviewSize(640,480);
+        mGLSurfaceView.setPreviewSize(1280,720);
     }
 
     @Override
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     private void startCameraPreview(){
         Log.w(TAG,"ready to go");
         if(null == camera2) {
-            camera2 = new Camera2Wrapper(getApplicationContext(), 0, "front camera",640,480);
+            camera2 = new Camera2Wrapper(getApplicationContext(), 0, "front camera",1280,720);
         }
         camera2.setGLSurfaceView(mGLSurfaceView);
         camera2.openCamera();
