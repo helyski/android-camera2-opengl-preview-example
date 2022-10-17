@@ -69,15 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if(checkPermissions()){
-                //
-                Toast.makeText(getApplicationContext(),"The camera is authorized",Toast.LENGTH_SHORT).show();
-                startCameraPreview();
-            }
-        }else{
-            startCameraPreview();
-        }
+        startCamera();
 
     }
 
@@ -166,6 +158,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         camera2.openCamera();
     }
 
+    private void startCamera(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(checkPermissions()){
+                //
+                Toast.makeText(getApplicationContext(),"The camera is authorized",Toast.LENGTH_SHORT).show();
+                startCameraPreview();
+            }
+        }else{
+            startCameraPreview();
+        }
+    }
+
     private void stopCamera(){
         camera2.releaseCamera();
         camera2 = null;
@@ -180,12 +184,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 lp.width = 1;
                 lp.height = 1;
                 mGLSurfaceView.setLayoutParams(lp);
+
+                stopCamera();
                 break;
 
             case R.id.btnChangeSizeToFullScreen:
                 lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
                 lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 mGLSurfaceView.setLayoutParams(lp);
+
+                startCamera();
                 break;
             default:
 
