@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
@@ -27,12 +28,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Camera2Wrapper camera2;
     MyGLSurfaceView mGLSurfaceView;
 
+    WindowManager wm;
+    int mWinWidth;
+    int mWinHeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mGLSurfaceView = findViewById(R.id.cameraPreview);
         mGLSurfaceView.setPreviewSize(1280,720);
+
+        wm = this.getWindowManager();
+        mWinWidth = wm.getDefaultDisplay().getWidth();
+        
+        ViewGroup.LayoutParams lp = mGLSurfaceView.getLayoutParams();
+        lp.width = mWinWidth;
+        lp.height =mWinWidth * 9/16;
+        mGLSurfaceView.setLayoutParams(lp);
 
         findViewById(R.id.btnChangeSizeToSmall).setOnClickListener(this);
         findViewById(R.id.btnChangeSizeToFullScreen).setOnClickListener(this);
